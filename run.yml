@@ -1,0 +1,29 @@
+name: test_run
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+concurrency:
+  group: "${{ github.ref }}"
+  cancel-in-progress: true
+env:
+  TEST_VALUE: 100
+  TEST_STR: test
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/appirits-ito-riku/containertest/my_image:latest
+    timeout-minutes: 60
+    steps:
+    - uses: actions/checkout@v3.5.0
+      with:
+        lfs: true
+    - uses: actions/cache@v3.3.1
+      with:
+        path: |-
+          node_modules
+          vendor/bundle
+        key: packages
+    # - run: bundle install --without development production --deployment --jobs=4
+    - run: cat /etc/*-release
