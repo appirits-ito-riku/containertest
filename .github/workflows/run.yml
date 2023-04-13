@@ -13,7 +13,7 @@ jobs:
   package:
     runs-on: ubuntu-latest
     container:
-      image: ghcr.io/appirits-ito-riku/containertest/my_image:latest
+      image: my_image:latest
     timeout-minutes: 60
     steps:
     - uses: actions/checkout@v3.5.0
