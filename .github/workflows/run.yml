@@ -13,7 +13,10 @@ jobs:
   package:
     runs-on: ubuntu-latest
     container:
-      image: my_image:latest
+      image: ghcr.io/appirits-ito-riku/containertest/my_image:latest
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.github_token }}
     timeout-minutes: 60
     steps:
     - uses: actions/checkout@v3.5.0
