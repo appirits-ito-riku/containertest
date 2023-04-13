@@ -29,4 +29,5 @@ jobs:
           vendor/bundle
         key: packages
     # - run: bundle install --without development production --deployment --jobs=4
-    - run: cat /etc/*-release
+    # - run: cat /etc/*-release
+    - run: echo "test"
